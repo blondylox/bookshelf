@@ -1,0 +1,563 @@
+### Создать покупателя
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "login": "katya_buyer",
+  "email": "katya@example.com",
+  "password": "buyer123",
+  "name": "Екатерина Иванова"
+}
+
+### Создать продавца
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "login": "ivan_seller",
+  "email": "ivan@example.com",
+  "password": "seller123",
+  "name": "Иван Петров"
+}
+
+### Создать админа
+POST http://localhost:3000/api/auth/register
+Content-Type: application/json
+
+{
+  "login": "admin",
+  "email": "admin@example.com",
+  "password": "admin123",
+  "name": "Система"
+}
+
+### Логин продавца
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "login": "ivan_seller",
+  "password": "seller123"
+}
+
+### Добавить книгу 1
+POST http://localhost:3000/api/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTYzNTk2MzEsImV4cCI6MTc1NjM2NjgzMX0.qBtX_aGOs6o6EnQhbyrUOyre4KDss7mrrCZdebLrft8
+
+{
+  "title": "Война и мир",
+  "description": "Эпопея Льва Толстого о судьбах людей во время Отечественной войны 1812 года.",
+  "price": 750,
+  "quantity": 10,
+  "genre": "Роман",
+  "publisher": "Эксмо"
+}
+
+### Добавить книгу 2
+POST http://localhost:3000/api/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTYzNTk2MzEsImV4cCI6MTc1NjM2NjgzMX0.qBtX_aGOs6o6EnQhbyrUOyre4KDss7mrrCZdebLrft8
+
+{
+  "title": "Мастер и Маргарита",
+  "description": "Знаковый роман Михаила Булгакова о любви, философии и сатире на общество.",
+  "price": 520,
+  "quantity": 7,
+  "genre": "Мистика",
+  "publisher": "АСТ"
+}
+
+### Добавить книгу 3
+POST http://localhost:3000/api/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTYzNTk2MzEsImV4cCI6MTc1NjM2NjgzMX0.qBtX_aGOs6o6EnQhbyrUOyre4KDss7mrrCZdebLrft8
+
+{
+  "title": "Преступление и наказание",
+  "description": "Роман Фёдора Достоевского о моральных муках и искуплении Раскольникова.",
+  "price": 600,
+  "quantity": 5,
+  "genre": "Психологический роман",
+  "publisher": "Азбука"
+}
+
+### Добавить книгу 4
+POST http://localhost:3000/api/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTYzNTk2MzEsImV4cCI6MTc1NjM2NjgzMX0.qBtX_aGOs6o6EnQhbyrUOyre4KDss7mrrCZdebLrft8
+
+{
+  "title": "Гарри Поттер и философский камень",
+  "description": "Первая книга Дж. К. Роулинг о мальчике-волшебнике Гарри Поттере.",
+  "price": 450,
+  "quantity": 15,
+  "genre": "Фэнтези",
+  "publisher": "Росмэн"
+}
+
+### Добавить книгу 5
+POST http://localhost:3000/api/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTYzNTk2MzEsImV4cCI6MTc1NjM2NjgzMX0.qBtX_aGOs6o6EnQhbyrUOyre4KDss7mrrCZdebLrft8
+
+
+{
+  "title": "1984",
+  "description": "Антиутопический роман Джорджа Оруэлла о тоталитарном государстве.",
+  "price": 500,
+  "quantity": 8,
+  "genre": "Антиутопия",
+  "publisher": "Пингвин Букс"
+}
+
+### Список всех книг
+GET http://localhost:3000/api/books
+
+### поиск
+GET http://localhost:3000/api/books?q=война
+
+### фильтр по жанру
+GET http://localhost:3000/api/books?genre=фэнтези
+
+### фильтр по издательству
+GET http://localhost:3000/api/books?publisher=АСТ
+
+### сортировка
+GET http://localhost:3000/api/books?sort=price_asc
+
+### Добавить обложку для "Война и мир" (id=2)
+POST http://localhost:3000/api/books/2/images
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY3MjExNjYsImV4cCI6MTc1NjcyODM2Nn0.MXHglNf3VYUqp9HtxbGZgrcI0SFUinAO6vHRYR8YaLc
+
+{
+  "url": "https://www.mann-ivanov-ferber.ru/assets/images/covers/33/31833/2.00x-thumb.png"
+}
+
+### Добавить обложку для "Мастер и Маргарита" (id=3)
+POST http://localhost:3000/api/books/3/images
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY3MjExNjYsImV4cCI6MTc1NjcyODM2Nn0.MXHglNf3VYUqp9HtxbGZgrcI0SFUinAO6vHRYR8YaLc
+
+{
+  "url": "https://cdn.eksmo.ru/v2/ITD000000001365529/COVER/cover1__w820.jpg"
+}
+
+### Добавить обложку для "Преступление и наказание" (id=4)
+POST http://localhost:3000/api/books/4/images
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY3MjExNjYsImV4cCI6MTc1NjcyODM2Nn0.MXHglNf3VYUqp9HtxbGZgrcI0SFUinAO6vHRYR8YaLc
+
+{
+  "url": "https://cdn.eksmo.ru/v2/430000000000145724/COVER/cover1__w820.jpg"
+}
+
+### Добавить обложку для "Гарри Поттер и философский камень" (id=5)
+POST http://localhost:3000/api/books/5/images
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY3MjExNjYsImV4cCI6MTc1NjcyODM2Nn0.MXHglNf3VYUqp9HtxbGZgrcI0SFUinAO6vHRYR8YaLc
+
+{
+  "url": "https://ir-3.ozone.ru/s3/multimedia-7/c1000/6410590627.jpg"
+}
+
+### Добавить обложку для "1984" (id=6)
+POST http://localhost:3000/api/books/6/images
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY3MjExNjYsImV4cCI6MTc1NjcyODM2Nn0.MXHglNf3VYUqp9HtxbGZgrcI0SFUinAO6vHRYR8YaLc
+
+{
+  "url": "https://avatars.mds.yandex.net/get-kinopoisk-image/1946459/78e401ec-e4dd-45aa-a6ad-6fe55682072d/orig"
+}
+
+### Добавить издательство АСТ
+POST http://localhost:3000/api/publishers
+Content-Type: application/json
+
+{ "name": "АСТ" }
+
+### Добавить издательство Эксмо
+POST http://localhost:3000/api/publishers
+Content-Type: application/json
+
+{ "name": "Эксмо" }
+
+### Добавить издательство Азбука
+POST http://localhost:3000/api/publishers
+Content-Type: application/json
+
+{
+  "name": "Азбука"
+}
+
+### Добавить издательство Росмэн
+POST http://localhost:3000/api/publishers
+Content-Type: application/json
+
+{
+  "name": "Росмэн"
+}
+
+### Добавить издательство Пингвин Букс
+POST http://localhost:3000/api/publishers
+Content-Type: application/json
+
+{
+  "name": "Пингвин Букс"
+}
+
+### Список всех издательств
+GET http://localhost:3000/api/publishers
+
+### Привязать издательство "Эксмо" к книге "Война и мир"
+PUT http://localhost:3000/api/books/1
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4MjY4NDUsImV4cCI6MTc1NjgzNDA0NX0.R_-jQ7cdTFoJfLvWPA2JqnOax8YGJy9YsLMZfM0-u0Q
+
+{
+  "publisherId": 1
+}
+
+### Привязать издательство "АСТ" к книге "Мастер и Маргарита"
+PUT http://localhost:3000/api/books/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4MjY4NDUsImV4cCI6MTc1NjgzNDA0NX0.R_-jQ7cdTFoJfLvWPA2JqnOax8YGJy9YsLMZfM0-u0Q
+
+{
+  "publisherId": 2
+}
+
+
+### Привязать издательство "Азбука" к книге "Преступление и наказание"
+PUT http://localhost:3000/api/books/3
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4MjY4NDUsImV4cCI6MTc1NjgzNDA0NX0.R_-jQ7cdTFoJfLvWPA2JqnOax8YGJy9YsLMZfM0-u0Q
+
+{
+  "publisherId": 3
+}
+
+### Привязать издательство "Росмэн" к книге "Гарри Поттер и философский камень"
+PUT http://localhost:3000/api/books/4
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4MjY4NDUsImV4cCI6MTc1NjgzNDA0NX0.R_-jQ7cdTFoJfLvWPA2JqnOax8YGJy9YsLMZfM0-u0Q
+
+{
+  "publisherId": 4
+}
+
+### Привязать издательство "Пингвин Букс" к книге "1984"
+PUT http://localhost:3000/api/books/5
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4MjY4NDUsImV4cCI6MTc1NjgzNDA0NX0.R_-jQ7cdTFoJfLvWPA2JqnOax8YGJy9YsLMZfM0-u0Q
+
+{
+  "publisherId": 5
+}
+
+### Обновить книгу 1984
+PUT http://localhost:3000/api/books/5
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4Mjg2MDIsImV4cCI6MTc1NjgzNTgwMn0.FNfCRLrSmIhfr4md9sjaVniKVgGl09Lka_rHlB-XCbc
+
+{
+  "publisherId": 6
+}
+
+### Обновить "1984" — Пингвин Букс
+PUT http://localhost:3000/api/books/5
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4Mjg2MDIsImV4cCI6MTc1NjgzNTgwMn0.FNfCRLrSmIhfr4md9sjaVniKVgGl09Lka_rHlB-XCbc
+
+{
+  "publisherId": 3
+}
+
+### Привязать жанр "Роман" (id=1) к книге "Война и мир" (id=1)
+POST http://localhost:3000/api/book-genres
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4OTcwODUsImV4cCI6MTc1NjkwNDI4NX0.GOLf8toRWHc0K8gP49zC6Jy2IqmY9ZMPgU6A024FoMA
+
+{
+  "bookId": 2,
+  "genreId": 1
+}
+
+### Добавить жанры
+POST http://localhost:3000/api/genres
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4OTY1OTksImV4cCI6MTc1NjkwMzc5OX0.wzPzwfEOJgFqFzBklzfJO25SiIXmXTUs0HEq1YELGUk
+
+{ "name": "Роман" }
+
+###
+POST http://localhost:3000/api/genres
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4OTY1OTksImV4cCI6MTc1NjkwMzc5OX0.wzPzwfEOJgFqFzBklzfJO25SiIXmXTUs0HEq1YELGUk
+
+{ "name": "Мистика" }
+
+###
+POST http://localhost:3000/api/genres
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4OTY1OTksImV4cCI6MTc1NjkwMzc5OX0.wzPzwfEOJgFqFzBklzfJO25SiIXmXTUs0HEq1YELGUk
+
+{ "name": "Психологический роман" }
+
+###
+POST http://localhost:3000/api/genres
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4OTY1OTksImV4cCI6MTc1NjkwMzc5OX0.wzPzwfEOJgFqFzBklzfJO25SiIXmXTUs0HEq1YELGUk
+
+{ "name": "Фэнтези" }
+
+###
+POST http://localhost:3000/api/genres
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4OTY1OTksImV4cCI6MTc1NjkwMzc5OX0.wzPzwfEOJgFqFzBklzfJO25SiIXmXTUs0HEq1YELGUk
+
+{ "name": "Антиутопия" }
+
+### Список жанров
+GET http://localhost:3000/api/genres
+
+### Проверить книгу с жанрами
+GET http://localhost:3000/api/books/1
+
+### Привязать жанр "Мистика" к "Мастер и Маргарита"
+POST http://localhost:3000/api/book-genres
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4OTcwODUsImV4cCI6MTc1NjkwNDI4NX0.GOLf8toRWHc0K8gP49zC6Jy2IqmY9ZMPgU6A024FoMA
+
+{
+  "bookId": 3,
+  "genreId": 2
+}
+
+### Привязать жанр "Психологический роман" к "Преступление и наказание"
+POST http://localhost:3000/api/book-genres
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4OTcwODUsImV4cCI6MTc1NjkwNDI4NX0.GOLf8toRWHc0K8gP49zC6Jy2IqmY9ZMPgU6A024FoMA
+
+{
+  "bookId": 4,
+  "genreId": 3
+}
+
+### Привязать жанр "Фэнтези" к "Гарри Поттер и философский камень"
+POST http://localhost:3000/api/book-genres
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4OTcwODUsImV4cCI6MTc1NjkwNDI4NX0.GOLf8toRWHc0K8gP49zC6Jy2IqmY9ZMPgU6A024FoMA
+
+{
+  "bookId": 5,
+  "genreId": 4
+}
+
+### Привязать жанр "Антиутопия" к "1984"
+POST http://localhost:3000/api/book-genres
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTY4OTcwODUsImV4cCI6MTc1NjkwNDI4NX0.GOLf8toRWHc0K8gP49zC6Jy2IqmY9ZMPgU6A024FoMA
+
+{
+  "bookId": 6,
+  "genreId": 5
+}
+
+### фильтр по жанру
+GET http://localhost:3000/api/books?genre=Мистика
+
+### ---- Фильтры по жанрам ----
+GET http://localhost:3000/api/books?genre=Антиутопия
+
+### ---- Фильтры по издательствам ----
+
+GET http://localhost:3000/api/books?publisher=Пингвин Букс
+
+
+### Получить все жанры
+GET http://localhost:3000/api/genres
+Content-Type: application/json
+
+### Получить все издательства
+GET http://localhost:3000/api/publishers
+Content-Type: application/json
+
+### Поиск книги (нечувствителен к регистру)
+GET http://localhost:3000/api/books?q=война
+
+### Поиск другой книги (например "МАСТЕР")
+GET http://localhost:3000/api/books?q=МАСТЕР
+
+### Добавить книгу 6 (издательство АСТ, жанр Роман)
+POST http://localhost:3000/api/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTcwNjQwMDksImV4cCI6MTc1NzA3MTIwOX0.tBLfb8vbJKXDNpoGE9a5VOt_FAUXMzXsuYBtef8qiwQ
+
+{
+  "title": "Анна Каренина",
+  "description": "Классический роман Льва Толстого о любви, семье и трагедии.",
+  "price": 680,
+  "quantity": 9,
+  "publisher": "АСТ"
+}
+
+### Привязать жанр к книге 6 (Роман)
+POST http://localhost:3000/api/book-genres
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTcwNjQwMDksImV4cCI6MTc1NzA3MTIwOX0.tBLfb8vbJKXDNpoGE9a5VOt_FAUXMzXsuYBtef8qiwQ
+
+{
+  "bookId": 6,
+  "genreId": 1
+}
+
+
+### Добавить книгу 7 (издательство Азбука, жанр Фэнтези)
+POST http://localhost:3000/api/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTcwNjQwMDksImV4cCI6MTc1NzA3MTIwOX0.tBLfb8vbJKXDNpoGE9a5VOt_FAUXMzXsuYBtef8qiwQ
+
+{
+  "title": "Хроники Нарнии. Лев, колдунья и платяной шкаф",
+  "description": "Первая книга Клайва Льюиса о приключениях детей в волшебной стране Нарнии.",
+  "price": 550,
+  "quantity": 12,
+  "publisher": "Азбука"
+}
+
+### Привязать жанр к книге 7 (Фэнтези)
+POST http://localhost:3000/api/book-genres
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTcwNjQwMDksImV4cCI6MTc1NzA3MTIwOX0.tBLfb8vbJKXDNpoGE9a5VOt_FAUXMzXsuYBtef8qiwQ
+
+{
+  "bookId": 7,
+  "genreId": 2
+}
+
+
+### Добавить книгу 8 (издательство АСТ, жанр Мистика)
+POST http://localhost:3000/api/books
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTcwNjQwMDksImV4cCI6MTc1NzA3MTIwOX0.tBLfb8vbJKXDNpoGE9a5VOt_FAUXMzXsuYBtef8qiwQ
+
+{
+  "title": "Сияние",
+  "description": "Знаменитый роман Стивена Кинга о семье, оказавшейся в зловещем отеле.",
+  "price": 720,
+  "quantity": 6,
+  "publisher": "АСТ"
+}
+
+### Привязать жанр к книге 8 (Мистика)
+POST http://localhost:3000/api/book-genres
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTcwNjQwMDksImV4cCI6MTc1NzA3MTIwOX0.tBLfb8vbJKXDNpoGE9a5VOt_FAUXMzXsuYBtef8qiwQ
+
+{
+  "bookId": 8,
+  "genreId": 3
+}
+
+### Обложка для книги 6 (Анна Каренина)
+POST http://localhost:3000/api/books/8/images
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTcwODgwNTksImV4cCI6MTc1NzA5NTI1OX0.A3fx9ue5ahX2f8cCFDjBAJu7e0u0syNMrYny-GcBEks
+
+{
+  "url": "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBxQSEhUSExIVFRUVGBgaGBgXGBcbGRUXGRkZGBgaGBgYHiggGBolHR0aITEhJSorLi4uGx8zODMtNygtLisBCgoKDg0OGhAQGzUlICUuKy0tLS0vLi0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLS0tLf/AABEIARkAswMBIgACEQEDEQH/xAAcAAABBQEBAQAAAAAAAAAAAAAAAwQFBgcBAgj/xABSEAABAgMEBAYMCgcHBAMAAAABAhEAAwQFEiExBkFRYRMicYGR0QcUFzJSU1Ryk6GisRUWIzNVssHS4fAkNEJiZHOUJTVFgoSS8XSzwsNDROL/xAAZAQADAQEBAAAAAAAAAAAAAAAAAQMCBAX/xAAyEQACAgEDAwIEBQIHAAAAAAAAAQIRAxIhMQRBURMUIjJhcUJSkaHBIzMFQ4Gx0eHw/9oADAMBAAIRAxEAPwDXYIICWxjwTrCCGnwpI8fK9Ijrg+E5Hj5XpEdcPSwsdwQ0+FJHj5XpEdcHwpI8fK9IjrgphY7ghp8KSPHyvSI6478JyPHyvSI64KYWOoIafCkjx8r0iOuD4UkePlekR1wUwsdwQ0+FJHj5XpEdcd+E5Hj5XpEdcFMLHUENPhSR4+V6RHXB8KSPHyvSI64KYWO4Ia/Ccjx8r0iOuOfCkjx8r0iOuCmFjuCGnwnI8fK9Ijrg+FJHj5XpEdcFMLHcENPhSR4+V6RHXHfhOR4+V6RHXBTCx1BDT4UkePlekR1w7hVQBBBBAMITqmuLcOLqnG0MXDwpCdR3ivNPugEY3N0es0BxZZVnlVT9TdcMhQ2V9Fkf6qfFtVXYZODqYN7sIhrQs9JUFpLDBxrP5EKHVT/E2N40R8uzLLP+Fn+qnwv8CWXrsw5P+tT8umOy6HEklRBw1DV6oeyKEJGBUOcn1RuXUy7SZnQhl8B2Xj/Zhwb/AO1P1xwWHZeP9mHD+KndcSwlJGsvzQ7kUMs5qY7BE31WT8zNaI+CvJsKzC39lLx2VM/CFvi5Zmuy1/1E/ri4U9OXAlrUWbY3ODDld5IZbcrb9wg9zl8seiPgo6dHLLP+GH+pnwDRiziWTZKjv7Znxcr4GaenXELpFpIZACUpxUCU+CyQ5LZk7hBDqM0nSf7icYLsQ69GLOGdls+2rnN0vCPwFZb3fgsk7BVT94HNhFeOkUxQN5V4k3r90JL53WBwDwto1a0uRUGbUqUVzEhiz3UqLgqxfEMw1DHXHbpzKLbkSuN8E/UaN2ahr1lKAP8AFT/shA2PZQzswg/9VPY88WidOTMReSQeg4ZYjVDTtYLw+wRye4yrlv8AU3piVydZllpzss7v0qfjDdVPZQ/wo/1c+LLPsp22fndEbWWOc89u9o3Hqn3kw0fQi+Bsr6KP9XPgTJsp2+Cj/Vzo5X0dxIU4OrJmz2QwvEHDDD89UWjlclab/Uy412JOTTWSVMqyyBjiKqcdWGzMsM43dOUfPykuhyAWOesjr/OqPoFOQiWSblyzemjsEEETGEJ1PeK81XuMKQnVd4rzVe4whGXpMsAAKcFnyxhzLRLUbpF1O0AkPzQ3p6dK04EhtbFn2RJ00xmeUN5SD0tjHIWbPEqxwcjr1AF+aHQstSf+PsiTkLcOw6B1QLmPlh0AQnZmiMmpOTjPnw3O3qiFrrfkyTdICinNs32PtiP0kt5cwKTTD5NKikzXxWoZhDZJzD62MUyQoBbrSCl8RiARvu8sduLpr3l+hNyNNsfSuVOWEpdKjqVg559cWFM9LdQ/CMFo6oGYoniAswDsk6mJLxo+i+kt67Jnr4z8VZ/b3H97frh5+lcN4ijOy4m6X1c2euKP2UaciVSzEYEKmZbGfni/SkAg5Zfl4p3ZQlqNPTqGLTVodmYqlnH1GIdK/wCqjWT5TLJqQSLwZ8cMidZYn7RCsmzTMxQUrOtN4BeAxZKmKsPBeI4qZRwbk2tEhT1DqlpLAIJOQdziok5nLDZHuytLY5T1JXdGBIxwIJBbpiTpbbqEEET1qGxRf3uehoi8+nLmhQHHHU3vx9UTaT5Rvg0OytMJKwAshJGYWPcoYNytzRaJd1SQU4pIwYuDz7IyaxqEVU6TTIQynKp018BLGxOQYYbyRGuSKQISJaMEpASncBgI8jrMUYNaeToxSbW5FV1m8JjgN2pxjjEDNsUmYVFG7c2T4RcJw5oZnlBOv8mOSOSUeCtFPpaO4paWwZ2B5OmNvTkIzZUkXgq6Nez7I0oR04puV2YmEEEEWJhHid3quQ+6PcJ1HeK80+6EBSJVGFPxUne20bodSKNQPfC70Nz6+SG9EkcUElxmDmobcNeOqJWWQMAcDz9GMcsUVo5IlY5k4Y5+p4iNLdIkUMguL0xYNxO394kZAOIm5WBOL83VGM9kevM6tmMXTLaWnZgAVN/mJ6I6unxKc6ZnI6Q0lz1Jp0uzGZnrPELPr1q9UR9fVOGGWvp2dELT5vyPBqUQcCBvGzYc4iCcwrA63zH2649THBXZzSdC6FgpDZ487M0SKnUgKOTPnlq6YiJa2Opm35HCHUuWSCBrIBfCNzjZlM1rQDSEVMnglrAnymSXIBmJySse47DyiGfZKt+WyKIIJmXkzFHUhgVBtpigJqxJCFy1ALGIdL7sX5Sxh3pvbQqKhM5IIKpEsEEMUqxvDpcPHFHpV6utcfyUc/horE3OHtn3Qiao5gJADalLS5fVgG/zRKJ0aWtCJgCSlWRBDMwYg7siNTRLWdoxLuEzFqKi4YA3U46ySX1ER1TzwSJpMqUueDmwj2qfnr/GH1dYC5cszEqQoJLKA75OLPjnjzjHDCJjQKwu2Z4UUy1oRitC3yUklJGosrBjA8kFHUCTbotnYxspMunmTFJImTT+0COKACkAH9lySdp2tFtlJ2n164c8GAwAYbMYSWAW1R5GV65OTOyCpUJzlO744YAnHmiJIZRO7LH/AIESK5oBIIGvOEbz7uV26Y45clKGCJZViGyw5I0MRS5KWIGGTkAPrw5YugjowLknMIIII6CYQnUniK81XuMKQjWn5NfmK9xgAyeXaSC3GxGRGDbS8S1LWAsMSeU49MZ5LqFJJPFYtg6Xx1M7+rbDukte6/GLpbAHA5dMZl00ktiqkmaZJrgxclkpfkAjHqeXNrJ6hKlrmzFqUspS2Cb2ZJICcxmYs9JbhmAhLcZLHbrh32KZglSVH9pd5yO+ulSkp9aT6oth/oxlJ/QlP4mkipLrlU85UmaGVKmAEFIwunwkk4vi+4YiI3SqoEyalYQxKcT4WJL+tn2AR4tpKhVzgoAPNUMcgCrivzNBVSEyuIrjNrdhexzYni8mb6o9CMVtLuc7Y3TTKKAkJxUy1KOCUpDgOrIDPnYZxwpDsmY/IFD34+qFpCuEBQq8wD3UgAA482bYmOcCJYJYXhq4VKiN7JHqfVFDJpHY40SpKyjmKny1KWZigF3lJKLrNcILHMknHZqIih6UWL2nUzKcqvISo3VbsxebWxD78o2DRacqXTy5ZKlFJclmDO90Yarzcw2xlnZHlL7enKUCAspUl8lAIQkkHXiMY5MOZyzOPYrKNRsjKK2VSJapNwKF+8944FmwGIY7d8OV6RBRB46SAwAOD7eUYNyRHLmpKJagMUpKFbw6vs6IKAKvK4NAUFAjjAG6Dhg+ved0dLhF7tE7JOXaKpqFJWoJWb7lXFG3HY7ARcexylUmaqUSAVIcjMg8UgcoBLxn82UQwUhWGu8kEjWHIY5YRPWZWT0TJSkYLmApQSeMX4oc4DBicohmhcGomoOnZtAXqx5/+coQ4Q3th1cnPrit2bVqQlTTFzBKVdmy5pBmSiAFOlae+DEFjmNYZosaTu/PPHkTtM7YUxMp17dsK04fF8Bs/GElJx27IWlzHz1fnOJbGxlcCVFhkdrHc8XQRUlYnDe+eI1xbYrg7kphBBBHQTCEK75qZ5ivqmF4Qr/mpnmK+qYFyB86JmG6CFhIGbh3P2CGc6pSFHI9OPIYbJSCm8+J15Qymyy+Dc0eljxonORLptFIOtLjMYa2OcSFkWkJKzMlrIJSQ6rmOLgMRtDxVgh81Y9J2x2USMo3LCmqMamS+kqr0xE0sVLBvtgCoFn2Yhjhhq1RyqUibS8IU8aUtEsqAzCxMUgk7ggpxfBtkRE/EA83vPviRs4/o85KSQSqUSGzSnhH5cw+59UPTpivoZGqljB1lsyBjj7jhrhdU0SlcWUCAwKlOQeghOzohKlzCjMlpxGJQDdD/upIET06aEm9w19wQEpShSFIfXiNYfLkeHJiJHRHSu5hOF5QwvEDFLuMdR9+ecPdNNIZM6mKCOPeCkJbEcZnBGQwPKIqRsld5wApLDFOsEPhyjbDOmTwyxLKglyznIN745n0+N5Nfjc3qdUeaea7lIAVjgBgdoaJGw6abOU/Bi4nMi4gDn1wxm0EyTMVLWgg5AtgTqKFZKHJD6xa6ZLCkAgkjipU/FxclIy5teeoxebbjcDIv22eDMoovPkGvPiXAYhgBrSx5oUsuqRNUJfHAHzazjdAPERruJG1y74kYCPFm2kBMJnKUrMFJQVX8TxVhxxccjgcNmBSTyhTpnYHG4qXdAG7MOOV+WJS4aAsgrivhxnNPa5mbZktKmWA2KgEMeVREaBKqEqZsmHP0ZxlyWmVEjNF8lN5J4yCphLUG1g6scCxwMXuzFkLDsErQFXWwSsEBQGwPi0eX1MdKR04pExPn4gAs+XLtEeZUthhnrd8848oUx6zBPXfS+XNmI4tR0NnZirhBBxx/ExcIo82pa7qwbdsi8CL9M+ScwgggjqJhCFofNTPMX9UwvCFofNTPMX9UwLkD5SkpJSMDlu2DdHsSCosH/OeEOEkFOA5OiHVMraDlnv3x6rnRPTYz7R2liOViNxbOA3Utxbx1lZcBtydWUKV0xRW91+UqZ+UGEZ0xxxnJccwxfONp2ibR5mFKgAU4nYet2h5Zs2Qg3iFAhm47EHa46YjirA6+qPVGtKVAqbPEnFt90BzA1aMlprpFOsBQvzioAlRKU3SGwC0jjf5kk74juDSkhQ4RhneQlSRg2Ye828Dk2TiLTkhDJWhb5JSg8wJUSR74cWXSqm962OD+CdTjP3xxPM4rc1Q1seecSFh1HBaQLl4eEEjAHDAjDdFUtSnUict8FFROG0knBosFpUM2nXwhIBfC6e/HR6jEfa1xawFTAiakcY3WQT4JCBxVDJwGO6K4mtVrhgz3ZekkxLS1F0KwIc5GI1CwuaTMLAqJUed2DZbIazEFJxDbOsbRHtate8HLXya4qscVbj3FZcqGjmVCeElyVGWkd9eEtJ5FK74792cPb7P8jMBKXuzCS+ohCgHVyxAi2Vz2E2ZMuJHFQkgIA80C6IlpNOpMkTZc4G8CUy7ySdpwGXJHJki1yNCE5ATwYHFN8EpY3kl9YO6LdPrSioSgjAzDd8yYCTgdi8N2G2KFWVnFAIAVhrDRftLKYmSJocqlqSvijLHE80cfULeMZd7LY+7Jpc3Is4Jx14dLCOTJozY4nBvtiPsi1k1EsLl4t36Tmk9OWww6CwMXZ2w/OMea4uLp8nRdrYaz54Oo4HXqIEaSmM0WoKL4MXxHLqeNLEdXTdycggggjqEEIV/zUzzFfVMLwjXfNTPMV9UwIR81UtEWDYkD7IeCzVPfVgTqIeF6GZliwDcmWvZEqFpOv8APKMI3PNJPY0o7EIugSAMFHb/AMNCNTZ0tsSQRsIb3dXPEzWzkhglTl8d2GuI2cg4qZ23t6o3DLJ7icEQNZKSg8VzvLF9uDZdMM748HW+BI5jtHREhadwi9+1EYMI9KDtbnNJbiyJ5GQbkDjnB98WnR/SOZL4pQQMweMCeQ+vFxFUChrGO0RL2daNShhKXMI1JABA6RGM0FKNAidtzSEzXZHzaXBIB42oqYMA/OWaKnJS6ipeJLu4BcnHOLpIE2aAakuxBShgAT4S2z5BHZ1npxVwffPi2A6o44Z44/hSN6GykpqVoBQ5ul8NQfYNUcTPwPESW5euJO0aC6CSkkDWHD9MRawBxgCRrBOPqyjuhJSVonKNDihmIUoCYbo27H2ahExZ9qyacrupVMdwMrpcMSQdeAx9UQ0lKVfs4NtYw+pqMFSQJSlnYl/XxYnkS7jSY5VShQCpigSpaGRLUCAHF4qJ2DIPzxdaRdVaQKy1PSXjdYcaaAWcjNQ5SE7jmK5bFiqkyULEtMq+4OtQSxKiWwyG88kaRRSwmUiTgEpAAxwUw4uOzCPL6rMlFSju96+h0Y4b7lQqNF51Oe2KWYb6XJSzEjM/uqH7rCJOy9IETpaFTSAvIpO0YOH27H3Q8Tb6UhlBQWMCUgK95+yG8uSgfKpQb5L4teJJJwS/4xzObnGsit9mVUa4FF3X5ScNWO6NNTGUlY4UoJ4wZRD5agBt1xqwh9OmrszMIIII6TAQlVh0LDgOlWJyGBxO6FY8zUgpIIcEEEbQ2MF1uBhcuxZQ/wAUs7f+kD7E5QqmyZQL/CdnDkqB68IvE7RezEB1UVMkbVYe8wimw7IIJFLRkDMhQw5eNE/f9LLf4v0N+nk42KZLseQP8Ss4f6lP3Y9zLJkkf3nZ39QMPVFwFh2R5LR/7h96OybAslZuopaRR2JIJ6AqD33Tc/F+genk+hmtZosheAtOzG/6nF/9sN06HJ+lLLP+p/8AzGk2tYdnySkCzacuDmDq54j+1KD6MpvajsxddjlFOLdfYhKDT3KhI0SkjO07NO/tnL1RPWbZdLLSxtKgJfVUDL8++JLtOg+jKb2o52pQfRlN7UE8+OezbBWuBPgaZz/aVA3/AFCY5MlU5/xKg/qB1Qt2nQfRlN7Uc7UoPoym9qIVg+prXIZ1Fm0is7SofTpPrJ+yIWs0YkFXydp2cANfbGJ5cIsxpKAZ2ZTe1He06D6MpvaisMuKHDYm2+SqI0Wkvjadmtt7YD+7GLNY0ilk52nRHd2wluhh+fWoaSg+jKb2o72nQfRlN7ULJkxZFUm/2BNrgkbQq6Kai6bQoXGTz0EHAgg7iCRlrhpZNVTykGUuvs9csd6TUJvNqBwYtk8IdqUH0ZTe1B2pQfRlN7URUOnSrejWuQ7M2hGKa2gB1PUpI92H5whvUVEm4blpUF8vnUJASTsYR57ToPoym9qDtOg+jKb2o1p6f6h6khvZ1NToBUu1KFcxeKj2wltwG6NeEZSKOg+jKb2o1ZMD9O7jf+oJt8hBBBCNBHF5HkjscXkeQxmXDAqVrKupmTLpI4JQLM6GvEnEjA4O3giM8q6KZST59qSUOhNQoVFOACOCKJar6RlfSVkk6jjk8aTah+Qm4PxFYbeKcIYWROT+kFr1+oXdHh8SWNeps90eN0md48bdWuGvK2/9Z1ZIamKmqlVMmVNlELC2VLwzLEY5FLOXLgpI2hogtGrN4OonpJTeVPWtSgnFZTwKix1AKIzc4u7ksxp0Gx6njN2jUqZ9VLNJJu45Sj9m7Gw2SsdszQA/yk8k7AU07dLH/bFHF4oS0O4NWn/H3Xf9fBm9TV8nnSfvkch94jILQspNVak2UpRSGBcM+EtG2Nf0n75HIfeIy/R1XC2pUzB3qQoPyKSgdIBj0f8ACm44HJdk/wDc5eo+cR7HMu7OqUj9lh0KUIU0hp+06yXWIHya1NMA1E4Kw3jHlEc0A/WKrl/81R70rqplTUpoJZASWMws+LX8dwDHDMmPSlb6h+K3+1EfwjOjtASK2unZ3ULKd5K0BPSWiW0CskoQamZjMnYgnMIJd+VRx5GirUmjyptRPp0zcZYUxI78pUAAccB0tFv0Htdc+WuXN+clEB2Y3S4DgawQR0Q+oVY3pfi/t2CPJBop1WnVzguYpMqU4SBqxupYZOcSTzQ+0BrVhc6kWq9wT3d103VAbssIQ7HQuzqlB74Nh5qlA+siPOhyb1oVSx3vyuPnTQ3uMGXicOySoF2Y1qLLTVWnOlLUoDEulnwSGziQ0GqpiKifSKWVpl3rpOooWEFtgL5boj6mROXac5NPMEtePGOy6H1HGLXoxo8KUKUV35i++V62D454k64WaaWPTJ8pUv5BLcq1XZCaq050pSikM7hnwSjbyw67GyLsypTsujoK4V0YVwtpVM0d6Lw9oJHqSY8djv52q5U/WXDyyfpSj4URLlHbdp+0q2XVpwlTFNMA1E990jjcoMNaK0BIqq+dhxQu7vUZgCfW0O9KKiZVVQoJZCU4FZZ8WvudwDcpMQNHo6qdPqJCZvGlXmJHzhSpgDjh641jSeNeo96/a9gfOxa9A7JMuWaiZ85OxxzCHf2jj0R9BCMC0JtldRKUiZ85KIBLAOk5OBrDEcwjfRHHl1epLUVhwEEEEYKBHF5HkMdjxPXdSpWbAnoDwmrVCKxaspSpZShySC4CrpULpAF7Vi3QYgLBs+pkmYtUrjLnrUwmpITKUXYYgEtmCMTje1QmOyPI8kmekHVHe6NI8kmekHVHmY+i6mEHCo0/uVl1OJu7ZOWrJ4eUqSunKkTAygpSAAOZTuMwzYjMRG6G2JMpEGWt1MuYQtRTeUkhAReYkuEpbZgIa90aR5JM9IOqOd0eR5JM9IOqBdF1SxvGqp/Vi9xivVZ57JU1SadakkpUJayCCxGWRjMdH9GahcpM6VVcFwgcgXgSxIxIOP4xotoaZ0k8NNolqDEMZoYg5ghsYbydJaFCQlNDMSkZATQAOQAR6nRxy4MCx1uc2XJCcrso1h2dMpbRRJM29fSVKZwFcVZDg54h4sVm2ApFXNqlrSq/eCQAeKCQzk7EholDpDQFYmGgXfAYK4UXgMcAq67YnphX410fkc3034RfJPJLjuqZhSj5Iey7BVKq51SVpImhTJALh1BWJ5o5ZVgKkVU2eFgom3uIxcEm9yYF+mJn410fkc3034QfGuj8jm+m/CJv1Xf1VD1QK1a+ia1TlT6adwSlveGIxOZBTt2bYktGbATSIKb15ai6lM2WQA2DHpiT+NdH5HN9N+EHxro/I5vpvwhyeaUdL4DVC7IWl0fUitXV30lKn4rFw4Azy1Q90lmqTSzlJJSoIJBBYjEZEQ9+NdH5HN9N+EeZuk1CoFKqGYpJwIM0EEbwRjGam5Jy7V+wao+Sh2DovUKlJmyqrghMAJCb4ODs7Z6+mFNH7PmUtopkmZevIKlM4CuKohwc2MXiVpNQpASmhmJSMgJoAA3ADCPB0hs+/wAJ2gu+zXuFF5tl5naOh5cktSa2d/8AQrj5IuybAVLqptStaVGZeugA8UEg69gAEerJsJUmqn1BWCJrsAC4dV7GJf410fkc3034R3410fkc3034RB+q7+qoeqHkhLHsBVPUzpoWky5r8Vi4JVeG7DEc8bwIyH410fkc3034RrwyhS1t3IpBrsEEEEZKBCNb83M8xX1TC0I1vzczzFfVMC5Ez56sqhXPmIkyw61kAbN5J1ADE8kbDZGgtJTo+UlpnLbjLmYh9yTxUj174q3YdoAqZOnkd4lKE8q3KudkjpMOuzBaJ+RpgeKQZix4WN1D7Rgr1RVtt0c0Eox1Mm7f0BppyCZKEyZjcUowQTsUnJjtGMZZZNA9ZKkTknGciXMS5B78JUHGWvERp3YqtBUykMtRJ4FZSH8AgKA5iSOQCIHSejEu26dQGE2ZTr574Qfqg88EW1aYTimlJFy+KFAgOaaUAMypy3KVGGtZoLQzkuiXcfJcpR9zlJ6Idaff3fUeaPrpindh+qXwk+U5uXAttQVebDYSD6hGVdXZR6dWmj3ovozKlVk6jq5SJpuJmSVlxeSCQpmO8Yaikw27J2j0mmTImSJYlpUVIUA+JYKTmdgVE9p9Ximq6CodrqpgX/LPBhXQFKMSXZHo+FoJhGJllMwf5TxvZKoak7TMuK0tLsVrsa6NyJ9PMmz5KZhMwpTefAJSl2Y7SeiHFFY1DMtOdT8Am7KlIKUgqCSsYzCQ/GLLSMfBMT+gMkSbOklWAKVTCdylFT/7WjGq6uVNmzJzkGYpSixOSiS3Jqhq22ZlUYrY25WilCsN2rJbalIB/wBycRGcad6G9ptOkkqkqLEHEy1HIE60nUebXFcsW1plJNTOlKIKTiAcFp1pUNYP4xutq0yaqlWjNM2UbvKUug8xYwbxY1pyJ7GU9jWzJVRUrROliYkSiQC+BvID4biY0g6G0Pksv2uuKF2Iv1uZ/JP10Q87MZ+UpvNm+9EErcqCFKFtFyGhlD5LL9rrjGjIT25wbC52xdu6rvC3W6MI2vQ79Rpf5Mv6ojGD+v8A+q/90EG9xZUtmjYDoZQ+Sy/a64BoZQ+Sy/a6489kD+76jzU/XTFc7Dx+TqfOl+5UZ3q7KvTqUaK52SrLlU9TLRJliWkygogPib6w+O4CNlRkOSMm7Lv63K/kp+uuNZRkOSCXyoUPmkdgggjBUIRrfm5nmK+qYWhGt+bmeYr6pgXIMo3YcH6NO/mj/tp/GIHstn9NR/IR9eZEl2GqsfLyTmyFj1pV/wCPTCXZhoyJsic2CkFBO9JvAc4UegxVfOcz3xDzsO95U+dL9yo96cf3rZ/nS/8AvCHPYkpCmlmTCPnJpbelACfrXuiIjSyrC7bpUg/NLp0nlMy+fUoQfiY/8tGg23ZoqZEyQpRSJgAJDOGIOD8kMdHtHpFny13VHHGZMmEDAZOcAlIx6Y9aZ1S5VFPmS1FK0pDKGY4yRhGJ2ha0+f8APTpkwbFKJH+3KFGLaNZJqL43JjT63xWVLoxlSxcQfCxdStwJbmAjStFKkVlmpCi5MtUlfKBcc8oY88YhGl9h2er9IltxBcU+xRcEc4A6I1NUieOTc9+5N6Vze1LJMvI8FLkDlKQlTf5QoxmGictCqyQmYElBWLwUAUkMcwcGi4dmC0HVJpwcnmK5TxUeq/0iM4MOC2Fll8X2N6+CKDxFJ/sldUTElAASEgBIACQMgBkzamj52suzVVE1EmWl1LLZZDWo7gMY320KhNNTLXkmTLLf5UskcpwETlGi2Od26M37Fqf06e2Qlr/7iWhbsx/OU3mzfeiPXYepFXqieRgyUA7VE3lf+PTDPsu1AVVSkeBKc8qlH7AI3+Mm/wC0aFod+o0v8mX9URjBH6f/AKr/AN0bPob+o0v8mX9URk1jUZnWqEAO1SpZ3JRMKyT0NziFDuPJxE1DshH+z6jkT9dMVvsOfN1PnS/cqJnsoVATQLGuYuWkb+NfPqSYhuw583U+dL9yoS+Q0/7qInsu/rcr+Sn6641lGQ5Iybsu/rcr+Sn6641lGQ5IUvlQ4fNI7BBBGCwQjW/NzPMV9UwtCdUl0LDs6VBzqcGBCZgWjFsKpJ8uekO2Ck+Eg98PtG8CNqkVlJaElnlzkFiUKZ0n95JxSRGYJ0Hw/XqXpX1QfEf+NpelfVFW4vuc0NcdqNHtrSGmoJN0FDpDS5KGc7Aw71O8xkti1iploSZ0xQvLqJalE4DGYCeQD3RJ/Eb+NpelXVHToP8AxtL0r6oE4ruEtcnwaBp3Vy1UFQBMQSUhgFJJPHTqBjEYtg0G/jaXpV1R34kfx1L0r6ocZRS5FNSk7oidE6JE+skSpgvIWohQchxdJzGIyjY1qpLMkHBMpAc3Ripatzl1qLfkCMz+JH8dS9K+qBWhJJc11MTvK+qFJxfccNUVwQFuWoqpnzJ68Cs4DwUjBKeYNFr7F1LTrVPE/gVFQQlKJl0uHJUQlWf7OUMviP8Ax1L0r6oDoP8AxtL0q6o05RqrMqMk7aNUkUtLSJK0pkSEnvlAIQ43nXGb9kHTJNSO16cvKBdasuFUMgBncBx3ltmLMaDfxtL0q6of9y2o8fJ9vqjEdN8m5ObVJF7l2pS0lJLmcSVKKApCEs6rwvMlOalH/mMXty01VU+ZPVgVlwPBSMEjmAEW3uW1Hj5Pt9Ud7l1R4+T7fVGo6V3FNTltReNEKyWKKmBmIBEqW4KkuOKN8RPY/mSQiqmMhK01E0LmFnKCq8l1HJOJ6IrZ7Fk/x0joX1R3uW1Hj5Pt9UZqPk1c9tuBp2RtJk1cxMqUXlSn42pazgSP3QMAd53RNdiKoQhFReWlLqQ14gPgrbDDuW1Hj5Pt9UHctqPHyehfVGvhqrMJT1aqEeyxOSqrllKgocCMQQf217I1xGQ5Iykdi2o8fJ6F9UaukYRidUkiuNO22EEEEYLBCdT3ivNV7jCkJ1HeK81XuMAjKRFEtzS+oBVwUrg0IWUFahedQJDOcBkcMYvYiqdkj9VR/NT9VcPpdPqJSV2SlwTmj9UqbTSpiy6lJclmxc6hEFpHpJNE8UtKkGYWBUQ7Eh2AOGAxJMS2iX6nI837TFW0go59NXdty5ZmIJCsASMU3VJLd7rY74rihB5pJ/Wl9RNuhZOkFXRzky6xloVjeATgMnSUgO2sGLLpJbApZBmteJISgaiognFtTAmKBpfa0ypMsrkGUAFXQp3U7OcQMMhlti3aW8EmhSmfedkBN1r3CBO/Vm+47YpkxK8bkt3ykJPkh12laQk9uX0cHgbl1PeksCzO3O8WvRy1e2ZCZpF0uQoDJxs3ZGM6UmtFGHv9rHHVk+H7wSTzRdtFa+QmivoCkolBV8HFQUBeUXGb6oOpxrRsld9v5CL3PWl1uKp0olymM6YRdDOwfNt5wHPshpoPbk6pM3hVA3AhmSAz3ny5BEDZFqyplRNq6mYEqYiUhlFnDDIahhykmFOxxWoRMmIUplTLgQGPGIvPllzw5YFHDJVuq3/4+watzRkxqVbUplS1zVPdQlSiwcskOWGsxlqY1GvU0tRuhTDBJyKv2Qedo4cfJVDJOkNOQTwgF3BQYkpOTG6DjyQ4nWpKSAVLa8zYKxCiwOWAJiuJtSluhSqVJUBdLJQM3BSly/e6v3gNce1WpTgMaM8QAMQgshRvMMe8dzsGUdPprwwslxpJSn/5k47ldWe7cY9Jt+nIJE0G6WLBWBOrLfEXWV1OlKRLp0q4RIOCU3QCojFszgcNt0ZnBobVpTdIoxd/aJQgXQUh22sVJDsxfA5OemvDC2T50gpmvcKGJIBZWJTdBAwxa8np3FndJWom3rinu4HAjbk4xGBxGwxW5ts0rAGkLDIcGnC8HJAOQOPKxhzZdrSErTKkyVDhFZputxi5JL5DFh+6QMoTx7bILLHBBBEjQQQQQAEJ1HeK81XuMKQnVKAQsl2CVEtmzF23wAZSIrundDMnU6UykFahMBYbLqsfdEiNN7J8Kt9HK+9HfjvZPh1vo5f3o3jwZoSUlHgk2n3POjchUullIWkpUlLEHMYmGekdpVUpaU00jhAUuTdUWLtqIGUPvjvZPh1vo5f3oPjvZPh1vo5f3o0sOXW5OFharkrVlaOT508VNacQQQhw5bIMMEpGzXEtppYq6qSng2voJIBwvAhiHOAOUP8A472T4Vb6OX96D472T4db6OX96NtdQ5qWnjjwL4a5Kh2zXmn7T7UPe3L7Hvcm8HLB4sGi9gcBTqlTmUZpJWkHABmuuN3vh/8AHeyfCrfRy/vQfHeyfCrfRy/vQ5xzSjpUK3vYFp8jaZotSMWp0uxbFWfTEDoNo+qWta58kpUm6ZZVqPGdmPJFn+O9k+FW+jl/eg+O9k+HW+jl/ejKj1Ki409w+GySTGp1a1BCigOpuKNT6nxGEY0NN7J8Kt9HL+9Fk7tNneDU+jT9+Jw6fKuYm1JeSzC063XSjVr6R32HL+SJtGtzNMnmJfWMidZY54A7QYrPdps7wan0afvwd2mzvBqfRp+/FvTyfkDUvJfLLmzFSwZqAhbqdIyzLNji4bHa8O3jOO7TZ3g1Po0/fg7tNneDU+jT9+MPBk/KPVHyaO8cjOe7TZ3g1Po0/fg7tNneDU+jT9+F6GTwGqJo0EZz3abO8Gp9Gn78aMDGJY5Q+ZDTT4CCCCMmghvaPzM3+Wv6phxHJiAoEHEEEHeDgYFyI+PKNUoIm8IlRWUjginJK7wcqx7264yOYj1LXJ4BQKV8PfF1WFwS24wId7z62/D6c7ntmeQyfa64O57ZnkMn2uuPS95DwyHps+X5ypfBywkK4R18ITkRhcu48r4c51KWkuSeD4FK0tLSJl9sZuN8pY96cGj6c7ntmeQyfa64O57ZnkMn2uuD3kPDD02fM9ozKczkmSiYmSyLwUReLNfIxOfLBbK6cznpkzEyeKwmMVb3Y/b0ZD6Y7ntmeQyfa64O57ZnkMn2uuF7yHhj9NnzSmZTdtXiiZ2rfPFBHCXNQcln545Z8ymFRenImGndfFSRfYhXB4uMQbr46jH0v3PbM8hk+11wdz2zPIZPtdcHvIeGHps+Y7LXIBmcOlagZahLuEBpuFwqc4pGLwUSpPBzhNCzMKRwJSzJVeBJW5yuuMjnH053PbM8hk+11wdz2zPIZPtdcHvIeGHps+ZJK5HATApKzPKk3FBrgSO+Cg+Z5IYx9U9z2zPIZPtdcHc9szyGT0K64fvYeGL02fMtprkGYkyEzEy7qLwWxVebjkYsQ7kZfbHuqmUxqbyETE015HFOK7mF8d9n3zY7I+l+57ZnkMnoV1wdz2zPIZPtdcL3kPDH6bPmVC5HDqJSvgHmXE/tAEK4K8xDsbrsdrQjTKlhMy+FFRSODbIKvJcqxGF29txIw2fUHc9szyGT7XXB3PbM8hk+11w/eQ8MXps+ZZa5Ha6gpMzti+LqgRcEtg4Id7zvqjzMXJ4BICV8PfVeUWuGWwugY4KBd8NY2Y/Tnc9szyGT0K64O57ZnkMnoV1wveQ8Mfps+Y6tUngpIlpWJoC+GKmuqN7iXMTknA5R9goyHJFa7ntmeQyfa64swjn6jNHJVG4RcQgggjmNhBBBAAQQQQAEEEEABBBBAAQQQQAEEEEABBBBAAQQQQAEEEEABBBBAAQQQQAEEEEAH//Z"
+}
+
+### Обложка для книги 7 (Хроники Нарнии)
+POST http://localhost:3000/api/books/8/images
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTcwNjQxMjMsImV4cCI6MTc1NzA3MTMyM30.2bN3ZEa5q9DhESgvil26VA9TEdcirsJcIbv0Y0JvPKg
+
+{
+  "url": "https://www.moscowbooks.ru/image/book/735/orig/i735325.jpg?cu=20211117161506"
+}
+
+
+### Обложка для книги 8 (Сияние)
+POST http://localhost:3000/api/books/9/images
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTcwODgwNTksImV4cCI6MTc1NzA5NTI1OX0.A3fx9ue5ahX2f8cCFDjBAJu7e0u0syNMrYny-GcBEks
+
+{
+  "url": "https://imo10.labirint.ru/books/778547/cover.jpg/484-0"
+}
+
+### Получить книгу 6
+GET http://localhost:3000/api/books/6
+
+### Получить книгу 7
+GET http://localhost:3000/api/books/7
+
+### Удалить обложки у книги 6
+
+
+DELETE http://localhost:3000/api/images/10
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTcwODgwNTksImV4cCI6MTc1NzA5NTI1OX0.A3fx9ue5ahX2f8cCFDjBAJu7e0u0syNMrYny-GcBEks
+
+### Удалить обложки у книги 7
+
+DELETE http://localhost:3000/api/images/17
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTcwODY4OTYsImV4cCI6MTc1NzA5NDA5Nn0.OHrn3tQ57OlwVTsEXYfvome_OA_UbOQUbm-O6B2UYTE
+
+### Получить книгу с обложками
+GET http://localhost:3000/api/books/8
+
+
+### Создать заказ
+POST http://localhost:3000/api/orders
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibG9naW4iOiJrYXR5YV9idXllciIsInJvbGUiOiJidXllciIsImlhdCI6MTc1NzEyNTczMiwiZXhwIjoxNzU3MTMyOTMyfQ.K8vAnLR7ouoJ-xOVMj23gL-yyinDN1z2OkIlem7WvWE
+
+{
+  "items": [
+    { "bookId": 6, "qty": 1 },
+    { "bookId": 7, "qty": 2 }
+  ]
+}
+
+### Мои заказы
+GET http://localhost:3000/api/orders/my
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibG9naW4iOiJrYXR5YV9idXllciIsInJvbGUiOiJidXllciIsImlhdCI6MTc1NzEyNTczMiwiZXhwIjoxNzU3MTMyOTMyfQ.K8vAnLR7ouoJ-xOVMj23gL-yyinDN1z2OkIlem7WvWE
+
+### Все заказы (seller/admin)
+GET http://localhost:3000/api/orders
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTcxNTA4ODEsImV4cCI6MTc1NzE1ODA4MX0.VQyPUkdYcYsBgHdR117piNUJzoVp1BnCUUik6NwCArU
+
+### Изменить статус заказа
+PUT http://localhost:3000/api/orders/1/status
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTcxNTA4ODEsImV4cCI6MTc1NzE1ODA4MX0.VQyPUkdYcYsBgHdR117piNUJzoVp1BnCUUik6NwCArU
+Content-Type: application/json
+
+{
+  "status": "shipped"
+}
+
+### Логин продавца
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "login": "ivan_seller",
+  "password": "seller123"
+}
+
+### Логин покупателя
+POST http://localhost:3000/api/auth/login
+Content-Type: application/json
+
+{
+  "login": "katya_buyer",
+  "password": "buyer123"
+}
+
+### Пересчитать цены заказа №1
+PUT http://localhost:3000/api/orders/1/fix-prices
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibG9naW4iOiJpdmFuX3NlbGxlciIsInJvbGUiOiJzZWxsZXIiLCJpYXQiOjE3NTcyMDU5OTUsImV4cCI6MTc1NzIxMzE5NX0.D-PeeUDHFGh9C_q38QZ6LfTP1nT19c3haROQMs0-2eI
+Content-Type: application/json

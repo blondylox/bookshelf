@@ -1,0 +1,143 @@
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+model user {
+  id           Int           @id @default(autoincrement())
+  login        String        @unique
+  email        String        @unique
+  passwordHash String
+  name         String?
+  role         Role          @default(buyer)
+  createdAt    DateTime      @default(now())
+  orders       order[]
+  reservations reservation[]
+  cartItems    cartItem[]
+}
+
+enum Role {
+  buyer
+  seller
+  admin
+}
+
+model publisher {
+  id    Int    @id @default(autoincrement())
+  name  String @unique
+  books book[]
+}
+
+model genre {
+  id    Int          @id @default(autoincrement())
+  name  String       @unique
+  links book_genre[]
+}
+
+model author {
+  id    Int           @id @default(autoincrement())
+  name  String
+  links book_author[]
+}
+
+model book {
+  id           Int           @id @default(autoincrement())
+  title        String
+  description  String?
+  publisher    publisher?    @relation(fields: [publisherId], references: [id])
+  publisherId  Int?
+  quantity     Int           @default(0)
+  shelfCode    String?
+  price        Int           @default(0)
+  images       bookImage[]
+  genres       book_genre[]
+  authors      book_author[]
+  createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
+  orderItems   order_item[]
+  reservations reservation[]
+  cartItems    cartItem[]
+}
+
+model book_genre {
+  book    book  @relation(fields: [bookId], references: [id])
+  bookId  Int
+  genre   genre @relation(fields: [genreId], references: [id])
+  genreId Int
+
+  @@id([bookId, genreId])
+}
+
+model book_author {
+  book     book   @relation(fields: [bookId], references: [id])
+  bookId   Int
+  author   author @relation(fields: [authorId], references: [id])
+  authorId Int
+
+  @@id([bookId, authorId])
+}
+
+model bookImage {
+  id     Int    @id @default(autoincrement())
+  url    String
+  bookId Int
+  book   book   @relation(fields: [bookId], references: [id])
+}
+
+model order {
+  id        Int          @id @default(autoincrement())
+  user      user         @relation(fields: [userId], references: [id])
+  userId    Int
+  status    OrderStatus  @default(pending)
+  createdAt DateTime     @default(now())
+  items     order_item[]
+}
+
+model order_item {
+  id      Int   @id @default(autoincrement())
+  order   order @relation(fields: [orderId], references: [id])
+  orderId Int
+  book    book  @relation(fields: [bookId], references: [id])
+  bookId  Int
+  qty     Int
+  price   Int
+}
+
+model reservation {
+  id        Int               @id @default(autoincrement())
+  user      user              @relation(fields: [userId], references: [id])
+  userId    Int
+  book      book              @relation(fields: [bookId], references: [id])
+  bookId    Int
+  status    ReservationStatus @default(active)
+  expiresAt DateTime
+  createdAt DateTime          @default(now())
+}
+
+enum OrderStatus {
+  pending
+  paid
+  shipped
+  cancelled
+}
+
+enum ReservationStatus {
+  active
+  expired
+  cancelled
+  converted
+}
+
+model cartItem {
+  id        Int      @id @default(autoincrement())
+  user      user     @relation(fields: [userId], references: [id])
+  userId    Int
+  book      book     @relation(fields: [bookId], references: [id])
+  bookId    Int
+  qty       Int      @default(1)
+  createdAt DateTime @default(now())
+}
