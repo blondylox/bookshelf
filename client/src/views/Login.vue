@@ -7,7 +7,7 @@ const error = ref("")
 
 async function submit() {
   try {
-    const res = await fetch("http://localhost:3000/api/auth/login", {
+    const res = await fetch("https://bookshelf-rq6q.onrender.com/api/auth/login", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ login: login.value, password: password.value })

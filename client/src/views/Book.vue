@@ -9,14 +9,14 @@ const message = ref("")
 const user = ref(null)
 
 async function loadBook() {
-  const res = await fetch(`http://localhost:3000/api/books/${route.params.id}`)
+  const res = await fetch(`${import.meta.env.VITE_API_URL}/api/books/${route.params.id}`)
   book.value = await res.json()
 }
 
 async function buyBook() {
   const token = localStorage.getItem("token")
   if (!token) {
-    message.value = "⚠ Сначала войдите в систему"
+    message.value = "Сначала войдите в систему"
     return
   }
 
@@ -28,7 +28,7 @@ async function buyBook() {
   }
 
   try {
-    const res = await fetch("http://localhost:3000/api/orders", {
+    const res = await fetch("https://bookshelf-rq6q.onrender.com/api/orders", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

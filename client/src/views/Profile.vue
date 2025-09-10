@@ -27,7 +27,7 @@ async function cancelOrder(orderId) {
   if (!token) return
 
   const res = await fetch(
-    `http://localhost:3000/api/orders/${orderId}/cancel`,
+    `https://bookshelf-rq6q.onrender.com/api/orders/${orderId}/cancel`,
     {
       method: "PUT",
       headers: {

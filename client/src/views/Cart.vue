@@ -7,7 +7,7 @@ async function loadCart() {
   const token = localStorage.getItem("token")
   if (!token) return
 
-  const res = await fetch("http://localhost:3000/api/cart", {
+  const res = await fetch("https://bookshelf-rq6q.onrender.com/api/cart", {
     headers: { "Authorization": "Bearer " + token }
   })
   cart.value = await res.json()
@@ -15,7 +15,7 @@ async function loadCart() {
 
 async function removeItem(id) {
   const token = localStorage.getItem("token")
-  await fetch(`http://localhost:3000/api/cart/${id}`, {
+  await fetch(`https://bookshelf-rq6q.onrender.com/api/cart/${id}`, {
     method: "DELETE",
     headers: { "Authorization": "Bearer " + token }
   })
@@ -24,7 +24,7 @@ async function removeItem(id) {
 
 async function checkout() {
   const token = localStorage.getItem("token")
-  const res = await fetch("http://localhost:3000/api/cart/checkout", {
+  const res = await fetch("https://bookshelf-rq6q.onrender.com/api/cart/checkout", {
     method: "POST",
     headers: { "Authorization": "Bearer " + token }
   })

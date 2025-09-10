@@ -12,7 +12,7 @@ const genres = ref([])
 const publishers = ref([])
 
 async function loadBooks() {
-  let url = "http://localhost:3000/api/books?"
+  let url = "https://bookshelf-rq6q.onrender.com/api/books"
   if (query.value) url += `q=${query.value}&`
   if (genre.value) url += `genre=${genre.value}&`
   if (publisher.value) url += `publisher=${publisher.value}&`
